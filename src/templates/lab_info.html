@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ lab.title }}</h1>
+<p>{{ lab.description | safe }}</p>
+<p><span class="sub-header">Objective:</span> {{ lab.objective }}</p>
+
+<div class="form-section">
+    {% block lab %}
+    {% endblock %}
+</div>
+{% endblock %}

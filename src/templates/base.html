@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damn Vulnerable Passkey</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <div class="sidebar-img">
+                <a href="/">
+                    <img src="./../static/images/sth-logo-white.png" style="width: 50%;" >
+                </a>
+                <div>Siam Thanat Hack Co., Ltd.</div>
+                <h3>Damn Vulnerable Passkey</h3>
+            </div>
+            <div id="labList">
+                <a class="lab-item" href="/"><p>Home</p></a>
+                <a class="lab-item" href="/get-start"><p>Get Start</p></a>
+                {% for lab in labs_info %}
+                    <a class="lab-item" href="/lab{{ lab.id }}"><p>{{ lab.title }}</p></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for the specific lab page -->
+    {% if lab %}
+        <script src="{{ url_for('static', filename='js/labs/' + lab.js_file) }}"></script>
+        <script src="{{ url_for('static', filename='js/simplewebauthn-browser.8.2.1.umd.min.js') }}"></script>
+        <script>
+            const {
+                browserSupportsWebAuthn,
+                startRegistration,
+                startAuthentication,
+                browserSupportsWebAuthnAutofill,
+            } = SimpleWebAuthnBrowser;
+        </script>
+    {% endif %}
+
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+        <div class="footer">
+            <p>&copy; 2025 Siam Thanat Hack Co., Ltd. All Rights Reserved.</p>
+        </div>
+    </div>
+<script>
+    const toggleBtn = document.getElementById('toggleSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.querySelector('.content');
+
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('open');
+        content.classList.toggle('shift');
+    });
+</script>
+</body>
+</html>

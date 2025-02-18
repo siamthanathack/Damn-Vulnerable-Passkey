@@ -1,0 +1,10 @@
+{% extends 'lab_info.html' %}
+
+{% block lab %}
+<p>Looking for some specific user? Search here!</p>
+<input type="text" placeholder="..." id="query">
+<button onclick="search_user()">Search</button>
+<div id="result">
+    <!-- API result will be injected here -->
+</div>
+{% endblock %}

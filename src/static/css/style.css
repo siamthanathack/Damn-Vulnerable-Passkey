@@ -1,0 +1,250 @@
+/* 
+This project was developed by Siam Thanat Hack Co., Ltd. (STH).
+Website: https://sth.sh  
+Contact: pentest@sth.sh
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    height: 100vh;
+    background: #f5f5f5;
+    color: #333;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    height: 100vh;
+    background: #f5f5f5;
+    color: #333;
+    overflow: hidden;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 10%; /* Initially 10% width */
+    min-width: 50px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    box-shadow: 3px 0 5px rgba(0, 0, 0, 0.1);
+    border-right: 3px solid #707070;
+    position: fixed; /* Fixed position on the left */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden; /* Hide overflow to avoid content spilling out when collapsed */
+}
+
+/* Image Styling - Always show the image */
+.sidebar-img {
+    width: 50%; /* Always show the image at 50% width */
+    height: auto;
+    margin-bottom: 10px; /* Add space between the image and the content */
+    transition: width 0.3s ease-in-out; /* Smooth transition for image size */
+}
+
+/* Show content inside sidebar only when open */
+.sidebar-content {
+    visibility: hidden; /* Initially hidden */
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s ease-in-out;
+}
+
+/* When mouse hovers over the sidebar, it expands */
+.sidebar:hover {
+    width: 20%; /* Expand to 30% width when hovered */
+}
+
+.sidebar:hover .sidebar-content {
+    visibility: visible;
+    opacity: 1; /* Show content inside sidebar */
+}
+
+.sidebar:hover .sidebar-img {
+    width: 100%; /* Image expands to full width when sidebar is open */
+}
+
+/* Content Styles */
+.content {
+    margin-left: 10%; /* Initially account for sidebar width */
+    flex-grow: 1;
+    padding: 30px;
+    background: #fff;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+/* Shift content when sidebar is expanded */
+.sidebar:hover ~ .content {
+    margin-left: 20%; /* Shift content to the right when sidebar expands */
+}
+
+.sidebar h3 {
+    font-size: 1.6rem;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #fff;
+    border-bottom: 2px solid #c8f038;
+}
+#labList {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+.footer {
+    color: #707070;
+    margin-top: auto;
+    text-align: left;
+    padding: 10px;
+    font-size: 0.8rem;
+}
+.lab-item {
+    border-top: 1px solid #2a2a2a;
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    padding: 12px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
+    width: 100%;
+}
+.lab-item:hover {
+    background-color: #444;
+    color: #c8f038;
+    border-radius: 5px;
+    border-left: 2px solid #c8f038;
+}
+/* .content {
+    flex-grow: 1;
+    width: 75%;
+    padding: 30px;
+    background: #fff;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+} */
+.lab-item.selected {
+    background-color: #333;
+    color: #c8f038;
+}
+.lab-info {
+    margin-bottom: 30px;
+}
+.lab-info h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+.lab-info p {
+    font-size: 1.1rem;
+    color: #555;
+}
+.form-section {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    margin: 10% auto 0 auto;
+}
+.form-section input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    width: 100%;
+}
+.form-section input:focus {
+    border-color: #c8f038;
+}
+.form-section button {
+    padding: 12px 20px;
+    /* font-weight: bold; */
+    background-color: #c8f038;
+    color: black;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+.form-section button:hover {
+    background-color: #bce42b;
+    /* color: #fff; */
+}
+.sub-header {
+    font-weight: bold;
+}
+/* Apply styles only for elements inside .home-page */
+.home-page {
+    text-align: center; /* Center the content */
+    background-color: #f4f4f4; /* Light background */
+    padding: 30px 20px; /* Padding around the content */
+}
+
+.home-page h1 {
+    font-size: 2.5rem; /* Large heading size */
+    color: #333; /* Darker color for text */
+    margin-top: 50px; /* Space from the top */
+}
+
+.home-page p {
+    font-size: 1.2rem; /* Slightly larger font for description */
+    line-height: 1.8;
+    max-width: 800px; /* Limit width for better readability */
+    margin: 20px auto; /* Center align and add margin */
+    padding: 0 15px;
+    color: #555; /* Slightly lighter text color */
+}
+
+.home-page img {
+    display: block;
+    margin: 30px auto; /* Center the image */
+    width: 50%;
+    /* max-width: 400px; */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    .home-page h1 {
+        font-size: 2rem; /* Smaller heading size on small screens */
+    }
+
+    .home-page p {
+        font-size: 1rem; /* Slightly smaller text */
+    }
+
+    .home-page img {
+        width: 80%; /* Make the image responsive on small screens */
+    }
+}

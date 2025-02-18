@@ -1,0 +1,23 @@
+
+services:
+  web:
+    build: .
+    container_name: damn-vulnerable-passkey
+    ports:
+      - "12345:5000"
+    # Load environment variables from the .env file
+    env_file:
+      - .env
+    networks:
+      - webnet
+    # Optionally, enforce security options:
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - ALL
+    # Add a restart policy to automatically restart the container
+    restart: unless-stopped
+
+networks:
+  webnet:
+    driver: bridge
