@@ -23,6 +23,10 @@ WORKDIR /app
 COPY --from=builder /usr/local/lib/python3.11/site-packages \
                     /usr/local/lib/python3.11/site-packages
 COPY ./src /app
+
+# Create the directory explicitly before changing ownership
+RUN mkdir -p /app/database_service/database_file/
+
 # **Key step: ensure the non-root user can write to all .db files**
 RUN chown -R appuser:appgroup /app/database_service/database_file/
 RUN chmod -R u+rw /app/database_service/database_file/
