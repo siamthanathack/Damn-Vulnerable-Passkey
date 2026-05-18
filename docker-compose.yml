@@ -4,7 +4,7 @@ services:
     build: .
     container_name: damn-vulnerable-passkey
     ports:
-      - "5000:5000"
+      - "42345:5000"
     # Load environment variables from the .env file
     env_file:
       - .env
