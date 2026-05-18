@@ -8,6 +8,11 @@ services:
     # Load environment variables from the .env file
     env_file:
       - .env
+    environment:
+      TZ: ${TZ:-Asia/Bangkok}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
     networks:
       - webnet
     # Optionally, enforce security options:
